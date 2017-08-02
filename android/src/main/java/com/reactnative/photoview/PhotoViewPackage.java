@@ -20,7 +20,7 @@ public class PhotoViewPackage implements ReactPackage {
         return Collections.emptyList();
     }
 
-    @Override
+//    @Override
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
         List<ViewManager> viewManagers = new ArrayList<>();
         viewManagers.add(new PhotoViewManager(reactContext));
