@@ -15,12 +15,12 @@ import java.util.List;
  * @version 1.0
  */
 public class PhotoViewPackage implements ReactPackage {
-    @Override
+//    @Override
     public List<Class<? extends JavaScriptModule>> createJSModules() {
         return Collections.emptyList();
     }
 
-//    @Override
+    @Override
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
         List<ViewManager> viewManagers = new ArrayList<>();
         viewManagers.add(new PhotoViewManager(reactContext));
