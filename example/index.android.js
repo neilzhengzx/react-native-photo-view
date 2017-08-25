@@ -35,7 +35,6 @@ const styles = StyleSheet.create({
         height: 300,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'black'
     },
     text: {
         backgroundColor: "transparent",

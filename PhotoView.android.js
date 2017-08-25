@@ -48,20 +48,27 @@ export default class PhotoView extends Component {
         }
 
         if (source && source.uri) {
-            var {onLoadStart, onLoad, onLoadEnd, onTap, onViewTap, onScale, ...props} = this.props;
+            var {onLoadStart, onLoad, onLoadEnd} = this.props;
 
             var nativeProps = {
-                onPhotoViewerLoadStart: onLoadStart,
-                onPhotoViewerLoad: onLoad,
-                onPhotoViewerLoadEnd: onLoadEnd,
-                onPhotoViewerTap: onTap,
-                onPhotoViewerViewTap: onViewTap,
-                onPhotoViewerScale: onScale,
-                ...props,
+                onPhotoViewerLoadStart: this.props.onLoadStart,
+                onPhotoViewerLoad: this.props.onLoad,
+                onPhotoViewerLoadEnd: this.props.onLoadEnd,
+                onPhotoViewerTap: this.props.onTap,
+                onPhotoViewerViewTap: this.props.onViewTap,
+                onPhotoViewerScale: this.props.onScale,
+                ...this.props,
                 shouldNotifyLoadEvents: !!(onLoadStart || onLoad || onLoadEnd),
                 src: source,
                 loadingIndicatorSrc: loadingIndicatorSource ? loadingIndicatorSource.uri : null,
             };
+
+          delete nativeProps.onLoadStart;
+          delete nativeProps.onLoad;
+          delete nativeProps.onLoadEnd;
+          delete nativeProps.onTap;
+          delete nativeProps.onViewTap;
+          delete nativeProps.onScale;
 
             return <PhotoViewAndroid {...nativeProps} />
         }
@@ -71,15 +78,9 @@ export default class PhotoView extends Component {
 
 var cfg = {
     nativeOnly: {
-        onPhotoViewerLoadStart: true,
-        onPhotoViewerLoad: true,
-        onPhotoViewerLoadEnd: true,
-        onPhotoViewerTap: true,
-        onPhotoViewerViewTap: true,
-        onPhotoViewerScale: true,
-        shouldNotifyLoadEvents: true,
         src: true,
-        loadingIndicatorSrc: true
+        loadingIndicatorSrc: true,
+        shouldNotifyLoadEvents: true
     }
 };
 const PhotoViewAndroid = requireNativeComponent('PhotoViewAndroid', PhotoView, cfg);
