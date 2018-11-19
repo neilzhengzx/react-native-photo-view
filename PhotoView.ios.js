@@ -11,7 +11,8 @@ export default class PhotoView extends Component {
         return (
             <ScrollView
                 contentContainerStyle={{ alignItems:'center', justifyContent:'center' }}
-                centerContent={true}
+                centerContent={this.props.centerContent}
+                bounces={false}
                 maximumZoomScale={this.props.maximumZoomScale}
                 minimumZoomScale={this.props.minimumZoomScale} 
                 showsHorizontalScrollIndicator={this.props.showsHorizontalScrollIndicator} 
